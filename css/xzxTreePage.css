@@ -1,0 +1,39 @@
+body{font-family: Century Gothic, sans-serif;color: #000; background-color: rgb(238, 238, 238);
+    background-image: url(../img/bg.png);background-origin: padding-box;background-size: auto;
+    text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;vertical-align: baseline;width: 1349px;display: block;
+    background-clip: border-box;background-attachment: scroll;}
+
+.menu-container{
+    padding-left:100px;}
+#logo1{background-image: url(../img/logo1.png);width: 370px;
+    display: block;
+    height: 90px;float: left;}
+.menu-nav{height: 50px;width: 700px;margin-top: 25px;float: right; font-size: 13px}
+.menuitem{list-style: none;
+    position: relative;
+    display:inline-block;padding:.75em 1em;}
+.menuitem a{text-decoration:none;}
+.box{padding-left:100px;
+    padding-right:90px;
+    position: absolute;top:150px}
+.figure{display: table-cell;position:relative;
+    /*float:left;*/
+    padding-left: 20px;vertical-align: bottom;}
+.figure-frame{
+    position: relative;display: table;
+    /*vertical-align: bottom;*/
+    width:1200px;height:550px;}
+#figure_trad_method {background-image: url(../img/diagram_trad_method.png); background-size:550px 350px;
+    width:550px;height:350px}
+#figure_curr_method {background-image: url(../img/diagram_current_method.png); background-size:550px 500px;
+    width:550px;height:500px;}
+
+
+.citation{
+    position: relative;
+    /*top:1750px;left:150px;*/
+    width:1150px;
+    height: auto;
+    font-family: Courier New;
+    font-size: 14px;
+}

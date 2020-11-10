@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/xzxTreePage.css">
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+
+    <title> Zhouxin's tree world</title>
+</head>
+<body>
+		<div class="VisitingStat" id="countuser" style="visibility:hidden; display:none;"></div>
+        
+    <div class="menu-container">
+        <hgroup class="logohgroup">
+            <!--<h2 class="hide">Zhouxin's tree world</h2>-->
+            <h2 id="logo1"></h2>
+        </hgroup>
+        <nav class="menu-nav">
+            <ul id="menu-main" class="menu"><li class="menuitem"><a href="index.html">Homepage</a></li>
+                <li class="menuitem"><a href="TreeModelPage.html">Tree Modeling</a></li>
+                <li class="menuitem"><a href="VegetationInversion.html">Vegetation Inversion</a></li>
+                <li class="menuitem"><a href="ReadingBooks.html">Reading Books</a></li>
+                <li class="menuitem"><a href="humans.txt">Contact</a></li>
+            </ul>
+        </nav><!--#nav-primary-->
+    </div><!--.container-->
+    <article class="box">
+        <div class="block">
+            <p id="demolist"> Demo index:
+                <a href="TreeModelSim.html" target="_blank" style="text-decoration:none;"><span style="color:red;">
+                demo1</span>,  </a>
+                <a href="TreeModelGuide.html" target="_blank"style="text-decoration:none;"><span style="color:red;">
+                demo2</span>,  </a>
+                <a href="TreeModelLeaf.html" target="_blank"style="text-decoration:none;"><span style="color:red;">
+                demo3</span>, </a>
+                <a href="TreeModelLeaves.html" target="_blank"style="text-decoration:none;"><span style="color:red;">
+                demo4</span> </a></p>
+            <h2> Attention to the forest</h2>
+            <p> I assume everyone have the sense that forest plays an influential role in the terrestrial
+                ecological systems; just considering their coverage around 30 percent of total land area.
+                I have paid special attentions to trees. It is not because I am doing research
+                on it so I have to. Trees just matter every moment they are on this earth.
+                When I set my first step to US in 2011, I was straightly touched by the large coverage of
+                vital dense forests with more than 20 feet in height here in Columbus. More than 17
+                metropolitan parks can be visited for free in a one-day trip. I can collect 17 tour brochures in one park site.
+                This really makes me shocked. I am not the single case among all my Chinese friends
+                who have buried anxiety deep in heart, the anxiety that our habitats in China may run out of tree covers.
+                I keep silent each time when the news goes about how China is struggling with the extreme weather and
+                how people's complaints rage around. My mother told me she prayed in front of Buddhas many times for fear of
+                disasters and miseries and she felt blessed that my hometown suffered from less abnormal weather conditions.
+                I will thank her for her pious belief but mom, this is not your responsibility but everyone's.
+                </br></br>
+                Many scientists around the world are making efforts to  monitor the status and the change of the trees
+                that may determine our future life. I just tried to grab a droplet of the sea by applying remote sensing
+                technology to forestry. I will start from parametrizing forest trees with biophysical variables, touch on
+                the current methods to retrieve biophysical variables and then raise my own points of interest.
+                </br></br>
+                To wake up, I'd like to share this <a href="TreeModelSim.html" target="_blank" style="text-decoration:none"><span style="color:red;">
+                demo1</span> </a> first. We can notice there is a bunch of yellow particles being emitted at certain time
+                interval. I intend to use this particles to represent the photon rays from the sum. When a photon reaches
+                the surface of an object (atmosphere/vegetation/ground or whatever), it has a probability of becoming absorbed,
+                reflected or transmitted. The reflectance can be specular or diffuse. My demo just simulates the behavior of
+                specular reflectance, diffuse reflectance and transmission, without consider absorption. The outgoing reflectance
+                can be captured by the remote sensing instrument and can be further processed into product.
+                </br></br>
+                When you move the objects(i.e. the branches and sphere) to a different location, the reflectance behavior
+                correspondingly differs. Although I did not add the leaves to the trees, I just want to use this very
+                simple demonstration to show that, the structure of trees will affect the reflectance behavior to a great
+                degree. Changing the geometry of sun light incident angle, the tree structure and any other settings will
+                change the directional reflectance. From this perspective, it is possible to model the relationship between
+                the forest information and the remote sensing product.
+                <!--<a href="#" class="read_more">Read More</a>-->
+            </p>
+            <h2>Forest information? How can I get?</h2>
+            <p>
+                There are plenty of forest parameters to take care of.
+                Physically: species, development stage, coverage, height, crown closure, crown size, crown depth,
+                stem density, basal area, Diameter breast height (DBH), leaf area index (LAI), crown/leaf clumping index,
+                fraction of photosynthetically active radiation (FPAR), biomass, Net primary productivity, age,
+                height of the first live branch, subcanopy/understory diversity, etc.
+                Chemically: chlorophyll content, water content, leaf nitrogen, chlorophyll fluorescence, fire fuel, etc.
+                </br></br>
+                These physical/chemical variables can be measured in certain ways which represent the change and status of
+                forest. The question is that field samples of these variables are usually very limited. A promising solution is
+                to infer these variables continuously from the existing remote sensing products with broad temporal and spatial coverage.
+                Basically, the <span style="color:red;text-decoration:none;">two figures</span> below give a glimpse of
+                two prototypes of retrieving forest variables from remote sensing reflectance product.
+
+            </p>
+            <div class="figure-frame">
+                <div class="figure">
+                    <div id="figure_trad_method"></div>
+                    <p>Figure 1. One approach to retrieving forest information.</p>
+                </div>
+                <div class="figure">
+                    <div id="figure_curr_method"></div>
+                    <p>Figure 2. Another approach to retrieving forest information.</p>
+                </div>
+            </div>
+            <p>Generally, statistical
+                models or physical models are built to estimate the unknown values of forest variables from the known.
+                Various statistical models, e.g. regression, and statistical learning models, provide fast and effective
+                means of such estimation as long as forest samples are sufficient. In parallel to the statistical models,
+                the so-called physical models, stem from physical principles such as radiosity, radiative transfer,
+                geometrical optics, or computer ray tracing. In their first step, these sophisticated models usually
+                quantify a scene presumably composed of trees and the ground with the physical/chemical parameters like LAI, leaf angle,
+                chlorophyll, etc. The spectral property such as reflectance and transmission behavior of a scene unit is
+                also defined based on a-priori knowledge. The aforementioned physical principles are then constructed
+                in the form of equations or recursions, which tie the physical/chemical variables and remotely sensed radiations
+                together. The construction is usually in the forward direction from the radiation source to the receptors.
+                Our target process is actually in the inverse direction so that we can get physical/chemical variables from
+                the remotely sensed reflectance. In this situation, the statistical models can be useful to model this
+                inverse process. The inversion results are the forest physical/chemical variables. Despite the complexity of
+                the physical models, the requirement for forest samples are minimized and validation of a physical model is doable.
+                Studying and applying the physical models has draw constant attention in remote sensing.
+            </p>
+            <h2> Something promising</h2>
+            <p>
+                The <a href="TreeModelSim.html" target="_blank" style="text-decoration:none"><span style="color:red;">
+                demo1</span> </a> shows a simplified principle of the computer-based simulation models to render an object.
+                Actually, the computer-based simulation models are held to be more accurate than other types of physical
+                models and therefore have great implication for correcting other physical models. One detailed example
+                can be found in<sup> <a href="http://www.cesbio.ups-tlse.fr/us/dart.html" style="text-decoration:none" target="_blank">
+                <span style="color:red;"> [1]</span> </a></sup>.
+            </br></br>
+                However, this important linkage between the micro-scale tree characteristics to macro-scale reflectance information
+                has not been self-contained due to the simplicity of the tree geometries and many other factors. The encyclopedic
+                library for diverse tree species seem to be set aside so far. On the other hand, the rapid development of sensing
+                technology, especially airborne and terrestrial LiDAR, has tremendously enabled the field of tree reconstruction
+                into a practical stage. A huge gap is formed. Not too bad, I still find several strong teams are doing this research topics
+                <sup><a href="http://www.ted.com/talks/greg_asner_ecology_from_the_air.html#!" style="text-decoration:none" target="_blank"><span style="color:red;">
+                [2]</span> </a> <a href="http://blog.geog.ucl.ac.uk/blog-entries/gabon-quantifying-forest-structure?goback=%2Egde_1317037_member_5802684013751582720#%21" target="_blank" style="text-decoration:none"><span style="color:red;">
+                [3]</span> </a></sup>. I am so thrilled at their breakthroughs and I just cannot help trying to throw myself in the air. Computers
+                can offer us details and we cannot ignore this great power.
+            </p>
+            <h2> My point goes here---Branches!</h2>
+            <p> The simplicity of tree geometries such as random distribution of leaves need be revised based on the integration of point clouds
+                and radiance measurements. The tree geometries requires covering more accurate tree distribution functions,
+                leaf distribution functions, dynamics of leaves and flowers, orientations of leaves, bare trunk influence.
+                In fact, leaves grow under strong constraint of their branches. The count, alignment and orientation of leaves and their
+                growing pattern are definitely impacted by the branch spatial properties. These rules can be observed and stored as
+                prior information database with species as a key. Since it is possible to have species classifications in a 3D scene based on
+                surveys or any other techniques as well as the rich spatial and spectral information, we can reconstruct the real
+                forest scene with the aid of computer algorithms. The results are tree structure database and we can obtain
+                the real statistics for the metrics that we are interested in.
+                </br></br>
+                At least three contributions can be made by such research:</br>
+                1) Providing true leaf area for LAI measurement.</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;The traditional labor for trapping leaf litters to measure LAI can be minimized. Branch based LAI estimates
+                will effectively address the overlapping effect of leaves.</br>
+
+                2) Simulating the dynamics of greening and defoliation more accurately.</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;The growing and falling of leaves are not sudden. They keep a certain order to turn dense or sparse.</br>
+
+                3) Quantifying the visible tree responses to environmental factors.</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;The bias of branch directions is affected by water resource and light hours. More unknown macro metrics of branches
+                that relates to environmental factors are worth research attentions.</br>
+
+                4) Exposing animal, fire and other factors that cause forest disturbance.</br>
+                &nbsp;&nbsp;&nbsp;&nbsp;The scanning technology achieves amazement by capturing some small-scale objects that used to be invisible.
+            </p>
+            <h2> Working now</h2>
+            Thank you for your patience since you reach here! I just want to share my current progress (
+            <a href="TreeModelGuide.html" style="text-decoration:none" target="_blank"><span style="color:red;">
+                demo2</span> </a>) here. Note that this demo consists of four scenes, with raw point clouds filtered by its peaks as Figure 1,
+            classified trunks as Figure 2, skeletonized trunks as Figure 3, and a pilot grown mesh as Figure 4.
+            Actually, I am not satisfied with the point data resolution, and it makes the skeletonization algorithm unsmooth.
+            But it is the best I can offer at present.
+            </br></br>
+            <span style="color:blue;">[-- updated Jan.7.2014]</span> </a> I have added <a href="TreeModelLeaf.html" target="_blank" style="text-decoration:none">
+            <span style="color:red;">demo3</span> </a> and <a href="TreeModelLeaves.html" target="_blank" style="text-decoration:none">
+            <span style="color:red;">demo4</span> </a> to illustrate the geometric modeling of leaf and scene. Something
+            playable is the simulation of leaf bend factor, leaf angle distribution, leaf and crown position distribution. The
+            two demos do not reflect anything real but does follow the distribution assumptions of some studies about building
+            physical models. These studies also assume that a pixel in a remote sensed image can be decomposed to shadow area,
+            and sunlit area. The total reflectance is a sum of the reflectance from shadow and from sunlit area if the reflected light
+            does not scatter multiple times. The assumptions about distribution and reflectance can apply in large scales,
+            but not in this high resolution case. As seen from the simple <a href="TreeModelLeaf.html" target="_blank" style="text-decoration:none">
+            <span style="color:red;">demo3</span> </a> and <a href="TreeModelLeaves.html" target="_blank" style="text-decoration:none">
+            <span style="color:red;">demo4</span> </a>, when you try a change of bend factor, the shadow will change drastically and the calculation of shadow area will be challenged.
+            </br></br>
+            In essence, the reflectance can be more accurately calculated using the ray tracing technology, based on the
+            radiative transfer equation, or called the rendering equation in computer graphics.
+            <blockquote>
+                \( L_0(p,w_0) = L_e(p,w_0) + \int_{2\pi^+}f_r(p,w_i,w_0)L_0(r_c(p,w_i),-w_i)cos\theta_idw_i \)
+            </blockquote>
+            Devoid of atmosphere, \( L_0 \) is the outgoing radiance, \( p \) is the ray hit point,  \( w_0 \) is the ray outgoing direction,
+            \( L_e \) is the self-emitted radiance from the ray hit point, \( f_r \) is the BRDF, \( w_i \) is the incident ray direction
+            at the hit point, \( r_c \) is the backward ray hit point. The detailed explanation can be found in Suffen 2007<sup><span style="color:red;">
+            [4]</span></sup>.
+            </br></br>
+            Combining ray tracing with trunk and leaf geometric modeling, a realistic scene for forest monitoring and ecological analysis is within reach.
+            </br></br>
+            End!
+        </div>
+        <p class="citation">[1] http://www.cesbio.ups-tlse.fr/us/dart.html;</br>
+            [2] http://www.ted.com/talks/greg_asner_ecology_from_the_air.html#!</br>
+            [3] http://blog.geog.ucl.ac.uk/blog-entries/gabon-quantifying-forest-structure?goback=%2Egde_1317037_member_5802684013751582720#%21</br>
+            [4] Suffern, Kevin Geoffrey, and Kevin Suffern. Ray Tracing from the Ground up. AK Peters, 2007.
+        </p>
+        <p><span style="color:blue;">[-- Last updated Jan.22.2014]</span></p>
+    </article>
+
+
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+<script src="js/plugins.js"></script>
+<script src="js/TreeModelPage.js"></script>
+
+
+</body>
+</html>

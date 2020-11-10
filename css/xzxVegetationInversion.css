@@ -1,0 +1,51 @@
+body{font-family: Century Gothic, sans-serif;color: #000; background-color: rgb(238, 238, 238);
+    background-image: url(../img/bg.png);background-origin: padding-box;background-size: auto;
+    text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px;vertical-align: baseline;width: 1349px;display: block;
+    background-clip: border-box;background-attachment: scroll;}
+
+.menu-container{
+    padding-left:100px;}
+#logo2{background-image: url(../img/logo2.png);width: 360px;
+    display: block;
+    height: 50px;float: left;}
+.menu-nav{height: 50px;width: 700px;margin-top: 25px;float: right; font-size: 13px}
+.menuitem{list-style: none;
+    position: relative;
+    display:inline-block;padding:.75em 1em;}
+.menuitem a{text-decoration:none;}
+.box{padding-left:100px;
+    padding-right:90px;
+    position: absolute;top:150px;
+}
+/*.picture{display: block;position:relative;*/
+    /*float:left;*/
+    /*padding-left: 20px;vertical-align: bottom;}*/
+.picture{width: 1000px;height: 600px}
+.picture-frame{
+    position: relative;
+    /*vertical-align: bottom;*/
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 80px;
+    padding-top: 40px;
+    }
+#picture_Inversion_Flow {background: url(../img/Inversion_Flow.png) no-repeat;background-size: contain; }
+#picture_MainInterface {background: url(../img/1_MainInterface.png) no-repeat;background-size: contain; }
+#picture_GenerateSample {background: url(../img/2_GenerateSample.png) no-repeat;background-size: contain; }
+#picture_CreateTrainingTesting {background: url(../img/3_CreateTrainingTesting.png) no-repeat;background-size: contain; }
+#picture_CallRTM {background: url(../img/4_CallRTM.png) no-repeat;background-size: contain; }
+#picture_Inversion {background: url(../img/5_Inversion.png) no-repeat;background-size: contain; }
+
+/*#figure_curr_method {background-image: url(../img/diagram_current_method.png); background-size:550px 500px;*/
+    /*width:550px;height:500px;}*/
+
+
+.citation{
+    position: relative;
+    /*top:1750px;left:150px;*/
+    width:1150px;
+    height: auto;
+    font-family: Courier New;
+    font-size: 14px;
+}

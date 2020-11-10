@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/xzxTreeModel.css">
+    <title>This is experimented rendering page</title>
+
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="js/vendor/Detector.js"></script>
+    <script src="js/vendor/stats.min.js"></script>
+    <script src="js/three.js"></script>
+    <script src="js/MTLLoader.js"></script>
+    <script src="js/OBJMTLLoader.js"></script>
+    <script src="js/vendor/jquery.tools.min.js"></script>
+    <!--<script src="js/jquery-1.9.1.js"></script>-->
+
+</head>
+<body>
+<div class="VisitingStat" id="countuser" style="visibility:hidden; display:none;"></div>
+<div>
+    <div ID="frame_lf" class="frame_cls">
+        <div ID="container_leaf" class="canvas_cls"></div>
+        <p class="caption">Figure 1. Oak leaf (local renderer)</p>
+
+    </div>
+    <div ID="frame_para" class="frame_cls">
+        <div id="bend_frm">
+            <div id="scrollwrap_BX" class="scrollwrap">
+                <div id="scroll_lbl_BX" class="scroll_lbl">bendX:</div>
+                <div id="scroll_BX" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_BX" class="scrollrange" value="0" min="-2" max="2" step="0.1" />
+            <div id="scrollwrap_BY" class="scrollwrap">
+                <div id="scroll_lbl_BY" class="scroll_lbl">bendY:</div>
+                <div id="scroll_BY" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_BY" class="scrollrange" value="0" min="-2" max="2" step="0.1" />
+        </div>
+        <div id="scale_frm">
+            <div id="scrollwrap_SX" class="scrollwrap">
+                <div id="scroll_lbl_SX" class="scroll_lbl">scaleX:</div>
+                <div id="scroll_SX" class="scroll">1</div>
+            </div>
+            <input type="range" id="scrollrange_SX" class="scrollrange" value="1" min="0.2" max="2" step="0.1" />
+            <div id="scrollwrap_SY" class="scrollwrap">
+                <div id="scroll_lbl_SY" class="scroll_lbl">scaleY:</div>
+                <div id="scroll_SY" class="scroll">1</div>
+            </div>
+            <input type="range" id="scrollrange_SY" class="scrollrange" value="1" min="0.2" max="2" step="0.1" />
+            <!--<button type="button" id="light_btn" class="btn">Hemi-light</button>-->
+        </div>
+        <div id="rotation_frm">
+            <div id="scrollwrap_RX" class="scrollwrap">
+                <div id="scroll_lbl_RX" class="scroll_lbl">rotationX:</div>
+                <div id="scroll_RX" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_RX" class="scrollrange" value="0" min="0" max="360" step="10" />
+            <div id="scrollwrap_RY" class="scrollwrap">
+                <div id="scroll_lbl_RY" class="scroll_lbl">rotationY:</div>
+                <div id="scroll_RY" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_RY" class="scrollrange" value="0" min="0" max="360" step="10" />
+            <div id="scrollwrap_RZ" class="scrollwrap">
+                <div id="scroll_lbl_RZ" class="scroll_lbl">rotationZ:</div>
+                <div id="scroll_RZ" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_RZ" class="scrollrange" value="0" min="0" max="360" step="10" />
+        </div>
+
+        <div id="dirlight_frm">
+            <div id="scrollwrap_SZ" class="scrollwrap">
+                <div id="scroll_lbl_SZ" class="scroll_lbl">Zenith:</div>
+                <div id="scroll_SZ" class="scroll">45</div>
+            </div>
+            <input type="range" id="scrollrange_SZ" class="scrollrange" value="45" min="0" max="90" step="5" />
+            <div id="scrollwrap_SA" class="scrollwrap">
+                <div id="scroll_lbl_SA" class="scroll_lbl">Azimuth:</div>
+                <div id="scroll_SA" class="scroll">45</div>
+            </div>
+            <input type="range" id="scrollrange_SA" class="scrollrange" value="45" min="0" max="360" step="5" />
+            <div id="scrollwrap_Int" class="scrollwrap">
+                <div id="scroll_lbl_Int" class="scroll_lbl">Intensity:</div>
+                <div id="scroll_Int" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_Int" class="scrollrange" value="0" min="0" max="5" step="0.5" />
+        </div>
+        <button type="button" id="reset_btn" class="btn">Reset All!</button>
+    </div>
+
+</div>
+<p id="time_stamp_leaf"><span style="color:blue;">[-- Last updated Dec.18.2014]</span></p>
+<script src="js/TrackballControls.js"></script>
+<script src="js/simple_statistics.js"></script>
+<script src="js/OBJLoader.js"></script>
+<script src="js/MOD3.min.js"></script>
+<script src="js/SubdivisionModifier.js"></script>
+<script src="js/TreeModelLeaf.js"></script>
+</body>
+</html>

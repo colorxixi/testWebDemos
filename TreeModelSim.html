@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+
+    <title>Hello, this is my tree model page</title>
+    <!--<p>Hello, this is my tree model page</p>-->
+    <!--<link rel="stylesheet" href="css/normalize.css">-->
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/xzxTreeModel.css">
+    <!--<link rel="stylesheet" href="css/main.css">-->
+    <!--<script src="js/vendor/modernizr-2.6.2.min.js"></script>-->
+    <script src="js/three.js"></script>
+
+</head>
+<body>
+		<div class="VisitingStat" id="countuser" style="visibility:hidden; display:none;"></div>
+    <p align="center"> This is my abstract demo to simulate sunlight photons that interact with vegetation.<br>
+        Hint: view=mouse control; select=double click; move=keyboard(WASDQE,wasdqe).
+        <br>Reflection factor: 0.5, transmission factor: 0.3, specular factor: 0.2 (both the sphere and trunk)</p>
+    <!--<p> There is alot fun adding more functions later!</p>-->
+    <p></p>
+
+    <div ID="container_sim" class="canvas_cls">
+    </div>
+    <p class="time_stamp"><span style="color:blue;">[-- Last updated Dec.02.2014]</span></p>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <!--<script src="js/plugins.js"></script>-->
+    <script src="js/TrackballControls.js"></script>
+    <script src="js/simpleEmitterClass.js"></script>
+    <script src="js/OBJLoader.js"></script>
+    <script src="js/TreeModelSim.js"></script>
+</body>
+</html>

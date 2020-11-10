@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/xzxVegetationInversion.css">
+    <title>VegeInv-experiments for biophysical parameter retrieval</title>
+</head>
+<body>
+<div class="VisitingStat" id="countuser" style="visibility:hidden; display:none;"></div>
+<div class="menu-container">
+    <hgroup class="logohgroup">
+        <!--<h2 class="hide">Zhouxin's tree world</h2>-->
+        <h2 id="logo2"></h2>
+    </hgroup>
+    <nav class="menu-nav">
+        <ul id="menu-main" class="menu"><li class="menuitem"><a href="index.html">Homepage</a></li>
+            <li class="menuitem"><a href="TreeModelPage.html">Tree Modeling</a></li>
+            <li class="menuitem"><a href="VegetationInversion.html">Vegetation Inversion</a></li>
+            <li class="menuitem"><a href="ReadingBooks.html">Reading Books</a></li>
+            <li class="menuitem"><a href="humans.txt">Contact</a></li>
+        </ul>
+    </nav><!--#nav-primary-->
+</div><!--.container-->
+<article class="box">
+    <div class="block">
+    <b>VegeInv</b> serves as a Matlab package that integrates a radiative transfer model and machine learning algorithms in retrieving biophysical
+    parameters. Figure 1 summaries its general procedure. Initially, a radiative transfer model is run in the forward mode. The outcomes are
+    sampled and split into training and testing dataset. Next, a collection of machine learning algorithms can be trained to fit the
+    radiative transfer model. Using either the testing dataset or observed dataset from other sources, the trained machine learning algorithm
+    outputs the predicted values of biophysical variables.
+        The radiative transfer model in current package is <b>PROSAIL</b>. The machine learning algorithms are the Support Vector Machines regression (<b>SVR</b>),
+        the Bayesian Support Vector Machines regression (<b>BSVR</b>), the Gaussian Processes regression (<b>GP</b>), Artificial Neural Network (<b>ANN</b>) and the
+        Look-up table methods (<b>LUT</b>). The codes under the current version can be downloaded (<a href="VegeInv1.0_src.rar" target="_blank" style="text-decoration:none"><span style="color:red;">here</span></a>). 
+        The utility of Matlab toolboxes and libraries in the package include PROSAIL
+        <sup><span style="color:red;"> [1]</span></sup>,libSVM<sup><span style="color:red;"> [2]</span></sup>,
+        GPML<sup><span style="color:red;"> [3]</span></sup>, MCMC diagnostic toolbox and Global Optimization toolbox.
+    </div>
+    <div class="picture-frame">
+    <div id="picture_Inversion_Flow" class="picture"></div>
+    <p>Figure 1. General procedure for biophysical variable retrieval.<br><br></p>
+
+    <div id="picture_MainInterface" class="picture"></div>
+    <p>Figure 2. The main interface for VegeInv.<br><br></p>
+
+    <div id="picture_GenerateSample" class="picture"></div>
+    <p>Figure 3. Sampling the input parameters to PROSAIL model and generating a Look-up table. <br><br>
+    You can input a range of parameters in the Parameter Setting panel. Then the range will be transformed<sup><span style="color:red;"> [4]</span></sup>
+        based on the rules in the Parameter Transformation panel. A random sampling scheme will be applied in the transformed parameter space and
+        the resulting samples will be transformed back to the original space.<br><br>
+    </p>
+
+    <div id="picture_CreateTrainingTesting" class="picture"></div>
+    <p>Figure 4. Generating a training and a testing dataset. <br><br>
+        The training and testing dataset are extracted from the Look-up table with flexible starting and ending location.<br><br>
+    </p>
+
+    <div id="picture_CallRTM" class="picture"></div>
+    <p>Figure 5. PROSAIL in the forward mode.<br><br>
+    </p>
+
+    <div id="picture_Inversion" class="picture"></div>
+    <p>Figure 6. Running SVR (an example of the machine learning algorithms).<br><br>
+    The <b>validating sample path</b> is the location of the validation dataset. An example of the validation data is attached
+        in the package, as Oklahoma2003_valid.csv. The prediction results are output to the <b>prediction path</b>.<br><br>
+    A <b>trial size</b> for training and testing within the range of the training dataset can be set. The <b>target variable index</b> is
+        the column number of the target biophysical variable in the training dataset. For example, value 1 denotes retrieving LAI; and
+        value 1,4 denotes retrieving LAI and Cab.<br><br>
+    A Genetic algorithm (<b>GA</b>) is employed to tune the initial input parameters to SVR. A cross-validation scheme of <b>k folds</b> is also integrated into
+        GA to prevent the potential overfitting effect. To use GA to tune the initial input parameters, please click the button <b>Optimze</b>. After the tuning process,
+        the optimal initial parameters will be saved. When clicking the button <b>Train</b>, you can select to either load the optimal initial parameters or use the parameter
+        values in the SVR Prior Settings panel. After the training process, you can click the button <b>Predict</b> for prediction using the validation dataset.<br><br>
+    For more than one target variables, multiple ranges of tuning parameters can be assigned. In the case of retrieving LAI and Cab,
+        to-be-tuned theta can be 1,10;1,5, for example.<br><br>
+    Other machine learning algorithms are provided with similar operation flows, except that ANN uses an enumerating algorithm for parameter tuning.<br><br>
+
+    </p>
+
+</div>
+<p class="citation">[1] Jacquemoud S., Verhoef W., Baret F., Bacour C., Zarco-Tejada P.J., Asner G.P., François C., & Ustin S.L. (2009),
+    PROSPECT + SAIL models: a review of use for vegetation characterization. Remote Sensing of Environment, 113, S56-S66.</br></br>
+[2] Chih-Chung Chang and Chih-Jen Lin, LIBSVM : a library for support vector machines. ACM Transactions on Intelligent
+    Systems and Technology, 2:27:1--27:27, 2011. Software available at http://www.csie.ntu.edu.tw/~cjlin/libsvm</br></br>
+[3] http://www.gaussianprocess.org/gpml/code/matlab/doc/index.html</br></br>
+[4] M. Weiss, F. Baret, R. B. Myneni et al., Investigation of a model inversion technique to estimate canopy biophysical
+    variables from spectral and directional reflectance data, Agronomie, vol. 20, no. 1, pp. 3-22, 2000.
+</p>
+<p><span style="color:blue;">[-- Last updated Feb.22.2014]</span></p>
+</article>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+<script src="js/plugins.js"></script>
+<script src="js/VegetationInversion.js"></script>
+</body>
+</html>

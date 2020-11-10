@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/xzxTreeModel.css">
+    <link rel="stylesheet" href="css/OnOff.css">
+    <title>This shows the current process to model a tree</title>
+    <!--<a href="TreeModelSim.html">See the demo radiative transfer simulation</a>-->
+
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="js/vendor/Detector.js"></script>
+    <script src="js/vendor/stats.min.js"></script>
+    <script src="js/three.js"></script>
+</head>
+<body>
+<div class="VisitingStat" id="countuser" style="visibility:hidden; display:none;"></div>
+<p class="citation">Citation: </br>[1] Strahler, A.H.; C. Schaaf, C. Woodcock, D. Jupp, D. Culvenor, G. Newnham, R. Dubayah, T. Yao, F. Zhao, X. Yang. 2011.
+    ECHIDNA Lidar Campaigns: Forest Canopy Imagery and Field Data, U.S.A.,
+    2007-2009. Data set. Available on-line
+    [http://daac.ornl.gov] from Oak Ridge
+    National Laboratory Distributed Active Archive Center, Oak
+    Ridge, Tennessee, U.S.A.
+    http://dx.doi.org/10.3334/ORNLDAAC/1045
+</p>
+<p class="notation">All modeling algorithms are explored using Matlab.
+    The point cloud data file (2007_Harv_Plot02CP_Scan23_ND015_AT_project) were acquired from
+    http://daac.ornl.gov/NACP/guides/ECHIDNA.html </p>
+<div ID="frame1" class="frame_cls">
+    <div ID="container_raw" class="canvas_cls"></div>
+    <p class="caption">Figure 1. Single-scene terrestrial LiDAR data[1]</p>
+</div>
+
+<div ID="frame2" class="frame_cls">
+    <div ID="container_seg" class="canvas_cls"></div>
+    <p class="caption">Figure 2. Point cloud region growing</p>
+</div>
+<div ID="frame3" class="frame_cls">
+    <div class="onoffswitch" id="onoffswitch1">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch1" value="false">
+        <label class="onoffswitch-label" for="myonoffswitch1">
+            <div class="onoffswitch-inner"></div>
+            <div class="onoffswitch-switch"></div>
+        </label>
+    </div>
+    <div ID="container_skl" class="canvas_cls"></div>
+    <p class="caption">Figure 3. Point cloud skeletonization for a specific trunk
+        <a href="data/Tree.xml" target="_blank" style="text-decoration:none"><span style="color:red">(xml)</span> </a>
+     </p>
+</div>
+
+<div ID="frame4" class="frame_cls">
+    <div class="onoffswitch" id="onoffswitch2">
+        <input type="checkbox" name="onoffswitch2" class="onoffswitch-checkbox" id="myonoffswitch2" value="false">
+        <label class="onoffswitch-label" for="myonoffswitch2">
+            <div class="onoffswitch-inner"></div>
+            <div class="onoffswitch-switch"></div>
+        </label>
+    </div>
+    <div ID="container_grow" class="canvas_cls"></div>
+    <p class="caption">Figure 4. Trunk growth engine (under improvement)</p>
+</div>
+<p class="time_stamp"><span style="color:blue;">[-- Last updated Dec.13.2014]</span></p>
+
+<!--<div ID="container_skl" class="canvas_cls"></div>-->
+
+<!--<div ID="container_grow" class="canvas_cls"></div>-->
+
+
+
+
+<script src="js/TrackballControls.js"></script>
+<script src="js/rainbowvis.js"></script>
+<script src="js/simple_statistics.js"></script>
+<script src="js/ForestClass.js"></script>
+<script src="js/OBJLoader.js"></script>
+
+<script src="js/TreeModelGuide.js"></script>
+</body>
+</html>

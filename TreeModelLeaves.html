@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/xzxTreeLeaves.css">
+    <link rel="stylesheet" href="css/OnOff.css">
+    <title>This is experimented rendering page</title>
+
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="js/vendor/Detector.js"></script>
+    <script src="js/vendor/stats.min.js"></script>
+    <script src="js/three.js"></script>
+    <script src="js/MTLLoader.js"></script>
+    <script src="js/OBJMTLLoader.js"></script>
+    <script src="js/vendor/jquery.tools.min.js"></script>
+    <!--<script type="text/javascript" src="js/vendor/MathJax.js?config=TeX-AMS-MML_HTMLorMM"></script>-->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!--<script src="js/jquery-1.9.1.js"></script>-->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+
+</head>
+<body>
+<div class="VisitingStat" id="countuser" style="visibility:hidden; display:none;"></div>
+<div>
+    <div ID="frame_scene">
+        <div class="onoffswitch" id="onoffswitch_wire">wire
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch_wire" value="true">
+            <label class="onoffswitch-label" for="myonoffswitch_wire">
+                <div class="onoffswitch-inner"></div>
+                <div class="onoffswitch-switch"></div>
+            </label>
+        </div>
+        <div class="onoffswitch" id="onoffswitch_dot">dot
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch_dot" value="true">
+            <label class="onoffswitch-label" for="myonoffswitch_dot">
+                <div class="onoffswitch-inner"></div>
+                <div class="onoffswitch-switch"></div>
+            </label>
+        </div>
+        <div class="onoffswitch" id="onoffswitch_leaves">leaf
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch_leaves" value="true">
+            <label class="onoffswitch-label" for="myonoffswitch_leaves">
+                <div class="onoffswitch-inner"></div>
+                <div class="onoffswitch-switch"></div>
+            </label>
+        </div>
+        <div ID="container_leaves" class="canvas_cls"></div>
+        <p class="caption">Figure 1. Oak leaf (local renderer)</p>
+
+    </div>
+    <div ID="frame_para">
+        <div id="bend_frm" class="frm_cls">Leaf Bend:
+            <div id="scrollwrap_LEAF_BX" class="scrollwrap">
+                <div id="scroll_lbl_LEAF_BX" class="scroll_lbl">bendX:</div>
+                <div id="scroll_LEAF_BX" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_LEAF_BX" class="scrollrange" value="0" min="-2" max="2" step="0.1" />
+            <div id="scrollwrap_LEAF_BY" class="scrollwrap">
+                <div id="scroll_lbl_LEAF_BY" class="scroll_lbl">bendY:</div>
+                <div id="scroll_LEAF_BY" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_LEAF_BY" class="scrollrange" value="0" min="-2" max="2" step="0.1" />
+        </div>
+        <div id="scale_frm" class="frm_cls">Leaf Size:
+            <div id="scrollwrap_LEAF__SX" class="scrollwrap">
+                <div id="scroll_lbl_LEAF_SX" class="scroll_lbl">scaleX:</div>
+                <div id="scroll_LEAF_SX" class="scroll">1</div>
+            </div>
+            <input type="range" id="scrollrange_LEAF_SX" class="scrollrange" value="1" min="0.2" max="2" step="0.1" />
+            <div id="scrollwrap_LEAF_SY" class="scrollwrap">
+                <div id="scroll_lbl_LEAF_SY" class="scroll_lbl">scaleY:</div>
+                <div id="scroll_LEAF_SY" class="scroll">1</div>
+            </div>
+            <input type="range" id="scrollrange_LEAF_SY" class="scrollrange" value="1" min="0.2" max="2" step="0.1" />
+            <!--<button type="button" id="light_btn" class="btn">Hemi-light</button>-->
+        </div>
+
+        <div id="LADvdist_frm" class="frm_cls">LAD Distr Tri Func (Vertical):
+            <div id="scrollwrap_LAD_A" class="scrollwrap">
+                <div id="scroll_lbl_LAD_A" class="scroll_lbl">a:</div>
+                <div id="scroll_LAD_A" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_LAD_A" class="scrollrange" value="0" min="0" max="2" step="0.2" />
+            <div id="scrollwrap_LAD_B" class="scrollwrap">
+                <div id="scroll_lbl_LAD_B" class="scroll_lbl">b:</div>
+                <div id="scroll_LAD_B" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_LAD_B" class="scrollrange" value="0" min="-2" max="2" step="0.5" />
+            <div id="scrollwrap_LAD_C" class="scrollwrap">
+                <div id="scroll_lbl_LAD_C" class="scroll_lbl">c:</div>
+                <div id="scroll_LAD_C" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_LAD_C" class="scrollrange" value="0" min="-2" max="2" step="0.5" />
+        </div>
+
+        <div id="LAIdist_frm" class="frm_cls">LAI Distr Type:
+            <div id="scrollwrap_LAI_PO" class="scrollwrap">
+                <div id="scroll_lbl_LAI_PO" class="scroll_lbl">Poisson:</div>
+                <div id="scroll_LAI_PO" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_LAI_PO" class="scrollrange" value="0" min="0" max="10" step="1" />
+            <div id="scrollwrap_LAI_CLU" class="scrollwrap">
+                <div id="scroll_lbl_LAI_CLU" class="scroll_lbl">Clustering*:</div>
+                <div id="scroll_LAI_CLU" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_LAI_CLU" class="scrollrange" value="0" min="0" max="10" step="1" />
+            <div id="scrollwrap_LAI_DIS" class="scrollwrap">
+                <div id="scroll_lbl_LAI_DIS" class="scroll_lbl">Dispersing*:</div>
+                <div id="scroll_LAI_DIS" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_LAI_DIS" class="scrollrange" value="0" min="0" max="10" step="1" />
+        </div>
+
+        <div id="crown_frm" class="frm_cls">Crown Scale&Distr:
+            <div id="scrollwrap_CROWN_SX" class="scrollwrap">
+                <div id="scroll_lbl_CROWN_SX" class="scroll_lbl">scaleX:</div>
+                <div id="scroll_CROWN_SX" class="scroll">1</div>
+            </div>
+            <input type="range" id="scrollrange_CROWN_SX" class="scrollrange" value="1" min="1" max="5" step="0.5" />
+            <div id="scrollwrap_CROWN_SY" class="scrollwrap">
+                <div id="scroll_lbl_CROWN_SY" class="scroll_lbl">scaleY:</div>
+                <div id="scroll_CROWN_SY" class="scroll">1</div>
+            </div>
+            <input type="range" id="scrollrange_CROWN_SY" class="scrollrange" value="1" min="1" max="5" step="0.5" />
+            <div id="scrollwrap_CROWN_PO" class="scrollwrap">
+                <div id="scroll_lbl_CROWN_PO" class="scroll_lbl">Poisson:</div>
+                <div id="scroll_CROWN_PO" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_CROWN_PO" class="scrollrange" value="0" min="0" max="10" step="1" />
+            <div id="scrollwrap_CROWN_CLU" class="scrollwrap">
+                <div id="scroll_lbl_CROWN_CLU" class="scroll_lbl">Clustering*:</div>
+                <div id="scroll_CROWN_CLU" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_CROWN_CLU" class="scrollrange" value="0" min="0" max="10" step="1" />
+            <div id="scrollwrap_CROWN_DIS" class="scrollwrap">
+                <div id="scroll_lbl_CROWN_DIS" class="scroll_lbl">Dispersing*:</div>
+                <div id="scroll_CROWN_DIS" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_CROWN_DIS" class="scrollrange" value="0" min="0" max="10" step="1" />
+        </div>
+        <div id="scene_frm" class="frm_cls">Scene
+            <div id="scrollwrap_SCENE_S" class="scrollwrap">
+                <div id="scroll_lbl_SCENE_S" class="scroll_lbl">Size:</div>
+                <div id="scroll_SCENE_S" class="scroll">1</div>
+            </div>
+            <input type="range" id="scrollrange_SCENE_S" class="scrollrange" value="1" min="1" max="5" step="0.5" />
+        </div>
+
+        <div id="dirlight_frm" class="frm_cls">Directional Light:
+            <div id="scrollwrap_DIR_ZE" class="scrollwrap">
+                <div id="scroll_lbl_DIR_ZE" class="scroll_lbl">Zenith:</div>
+                <div id="scroll_DIR_ZE" class="scroll">45</div>
+            </div>
+            <input type="range" id="scrollrange_DIR_ZE" class="scrollrange" value="45" min="0" max="90" step="5" />
+            <div id="scrollwrap_DIR_AZ" class="scrollwrap">
+                <div id="scroll_lbl_DIR_AZ" class="scroll_lbl">Azimuth:</div>
+                <div id="scroll_DIR_AZ" class="scroll">45</div>
+            </div>
+            <input type="range" id="scrollrange_DIR_AZ" class="scrollrange" value="45" min="0" max="360" step="5" />
+            <div id="scrollwrap_DIR_INT" class="scrollwrap">
+                <div id="scroll_lbl_DIR_INT" class="scroll_lbl">Intensity:</div>
+                <div id="scroll_DIR_INT" class="scroll">0</div>
+            </div>
+            <input type="range" id="scrollrange_DIR_INT" class="scrollrange" value="0" min="0" max="5" step="0.5" />
+        </div>
+        <!--<p id="state1">Horizontal leaf angle is assumed to be randomly distributed. </br>-->
+            <!--Vertical leaf angle distribution parameter (mean leaf angle) is set below, </br>-->
+            <!--sampled by Monte Carlo Markov Chain</p>-->
+        <button type="button" id="reset_btn" class="btn">Reset!</button>
+    </div>
+    <!--<div ID="frame_notation">-->
+    <article ID="demo_note" class="box">
+        <div class="block">
+            <h2> Remarks</h2>
+            <p> This demo simulates leaf-level geometrical optics. You can control the parameters of
+                leaf bend, leaf size, leaf position distribution, leaf vertical angle distribution, crown size,
+                crown position distribution, scene size and light direction. </p>
+            <h2> Angle</h2>
+            <p>
+                The horizontal component of leaf angle is set to be randomly distributed from 0 to 360 degree.
+                The vertical component of leaf angle follows the triangular formula here:
+            </p>
+            <blockquote>
+                <p>
+                    \(g(\theta) = (a_1 + b_1\cos2\theta+c_1\cos4\theta)/\sin(\theta) \)
+
+                </p>
+            </blockquote>
+            <p>
+                For reference,
+                <blockquote>
+                \( a_1=\frac{2}{\pi}, b_1=c_1=0 \), uniform;</br></br>
+                \( a_1=b_1=\frac{1}{\pi}, c_1=0 \), planophile;</br></br>
+                \( a_1=\frac{2}{\pi}, b_1=-\frac{2}{\pi}, c_1=0, \), erectophile;</br></br>
+                \( a_1=\frac{2}{\pi}, b_1=0, c_1=-\frac{2}{\pi} \), plagiophile;</br></br>
+                \( a_1=\frac{2}{\pi}, b_1=0, c_1=\frac{2}{\pi} \), extremophile.
+                </blockquote>
+                In this demo, the parameters a, b, c satisfy:
+                \( a_1 = \frac{a}{\pi} \), \( b_1 = \frac{b}{\pi} \), \( c_1 = \frac{c}{\pi} \). </br></br>
+                It is difficult to sample \(\theta\) from the triangular distribution, for the complexity of
+                analytic inverse of its cumulative function. Here, the Biased Metropolis algorithm<sup>[1]</sup>,
+                one of the Monte Carlo sampling methods, was coded for drawing samples. Figure 1 shows an example
+                of the triangular distribution function where \( a_1 = \frac{2}{\pi}, b_1 = -\frac{2}{\pi},
+                c_1 = \frac{1}{\pi} \). Using the Biased Metropolis algorithm gives quite close approximations for such
+                distribution. The results are summarized in Figure 2 by a histogram with the sample size of 10000.
+            </p>
+            <div class="figure-frame">
+                <div class="figure" id="figure_frm_BM_orig">
+                    <div id="figure_BM_orig"></div>
+                    <p>Figure 1. An example of triangular formula with \( a_1 = \frac{2}{\pi}, b_1 = -\frac{2}{\pi},
+                        c_1 = \frac{1}{\pi} \). </p>
+                </div>
+                <div class="figure" id="figure_frm_BM_apprx">
+                    <div id="figure_BM_apprx"></div>
+                    <p>Figure 2. The histogram using Biased Metropolis sampling algorithm.</p>
+                </div>
+            </div>
+            <h2> Position</h2>
+            <p>Incorrect as it may be, crown and leaf positions are assumed to obey Poisson, clustering
+                Poisson, and simple inhibitive distribution in this demo. The latter two distributions both require
+                the density parameter that is specified in the Poisson distribution. The clustering Poisson distribution
+                takes two additional parameters that define within-cluster density and cluster size. The cluster size is
+                set by default while the within-cluster density can be controlled in the demo. The simple inhibitive
+                distribution discards any random point within a range specified by its controllable distance
+                parameter.
+            </p>
+            <h2> More</h2>
+            <p> This demo, as the name implies, is only used for demonstration. However, a further dive can unveil
+                more scientific values. For example, programming GPU shaders enables the calculation of shadow areas.
+                And repetitive simulations of leaf morphology, light direction and the other conditions with the resulting
+                posterior distributions of gaps, hotspot and other effects prepare the ground for studying biophysical
+                parameter inversion.
+
+            </p>
+        </div>
+        <p class="citation">[1] http://www.lattice.itep.ru/~pbaivid/lecture_notes/rejection_sampling.pdf;</br>
+        </p>
+    </article>
+    <!--</div>-->
+    <p class="time_stamp"><span style="color:blue;">[-- Last updated Dec.23.2014]</span></p>
+</div>
+
+
+<script src="js/TrackballControls.js"></script>
+<script src="js/simple_statistics.js"></script>
+<script src="js/OBJLoader.js"></script>
+<script src="js/MOD3.min.js"></script>
+<script src="js/SubdivisionModifier.js"></script>
+
+<script src="js/TreeModelLeaves.js"></script>
+</body>
+</html>
